@@ -1,0 +1,41 @@
+<html>
+<head>
+<title>socket.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6a8759;}
+.s3 { color: #6897bb;}
+.s4 { color: #808080;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+socket.py</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">socket</span>
+
+<span class="s1">SRV_ADDR = </span><span class="s2">&quot;192.168.32.100&quot;</span>
+<span class="s1">SRV_PORT = </span><span class="s3">444444</span>
+
+<span class="s1">s = socket.socket(sck.AF_INET</span><span class="s0">, </span><span class="s1">socket.SOCK_STREAM)</span>
+<span class="s1">s.bind((SRV_ADDR</span><span class="s0">, </span><span class="s1">SRV_PORT))</span>
+<span class="s1">s.listen(</span><span class="s3">1</span><span class="s1">)</span>
+
+<span class="s1">print(</span><span class="s2">&quot;Connessione al server.&quot;</span><span class="s1">)</span>
+
+<span class="s1">connection</span><span class="s0">, </span><span class="s1">address = s.accept()</span>
+<span class="s1">print(</span><span class="s2">'Client connecter with address:'</span><span class="s0">, </span><span class="s1">address)</span>
+
+<span class="s0">while </span><span class="s3">1</span><span class="s1">:</span>
+        <span class="s1">data = connetion.recv(</span><span class="s3">1024</span><span class="s1">)</span>
+        <span class="s0">if not </span><span class="s1">data: </span><span class="s0">break</span>
+        <span class="s4">#connection.sendall(b' -Message Recived --\n')</span>
+        <span class="s1">print(</span><span class="s2">'User say:'</span><span class="s0">, </span><span class="s1">data.decode(</span><span class="s2">'utf-8'</span><span class="s1">))</span>
+
+</pre>
+</body>
+</html>

